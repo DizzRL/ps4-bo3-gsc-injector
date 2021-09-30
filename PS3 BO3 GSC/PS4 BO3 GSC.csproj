@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2ECE5732-0DFA-4F75-AC9F-483C3BA4FF1F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PS4_BO3_GSC</RootNamespace>
+    <AssemblyName>PS4 BO3 GSC</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>download %282%29.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Irony, Version=1.1.0.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47, processorArchitecture=MSIL">
+      <HintPath>..\packages\Irony.1.1.0\lib\net40\Irony.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.5.0.0\lib\net461\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.Metadata.5.0.0\lib\net461\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConditionalBlocks.cs" />
+    <Compile Include="CompilerLib\CRC32.cs" />
+    <Compile Include="CompilerLib\EndianIO.cs" />
+    <Compile Include="CompilerLib\OpCodes\T7OpCode.cs" />
+    <Compile Include="CompilerLib\OpCodes\T7Op_AbstractCall.cs" />
+    <Compile Include="CompilerLib\OpCodes\T7OP_Call.cs" />
+    <Compile Include="CompilerLib\OpCodes\T7OP_CallPtr.cs" />
+    <Compile Include="CompilerLib\OpCodes\T7OP_EvalFieldVariable.cs" />
+    <Compile Include="CompilerLib\OpCodes\T7OP_GetFuncPtr.cs" />
+    <Compile Include="CompilerLib\OpCodes\T7OP_GetHash.cs" />
+    <Compile Include="CompilerLib\OpCodes\T7OP_GetLocal.cs" />
+    <Compile Include="CompilerLib\OpCodes\T7OP_GetNumericValue.cs" />
+    <Compile Include="CompilerLib\OpCodes\T7OP_GetString.cs" />
+    <Compile Include="CompilerLib\OpCodes\T7OP_Jump.cs" />
+    <Compile Include="CompilerLib\OpCodes\T7OP_Return.cs" />
+    <Compile Include="CompilerLib\OpCodes\T7OP_SafeCreateLocalVariables.cs" />
+    <Compile Include="CompilerLib\ScriptComponents\T7DebugTableSection.cs" />
+    <Compile Include="CompilerLib\ScriptComponents\T7ExportsSection.cs" />
+    <Compile Include="CompilerLib\ScriptComponents\T7ImportSection.cs" />
+    <Compile Include="CompilerLib\ScriptComponents\T7IncludesSection.cs" />
+    <Compile Include="CompilerLib\ScriptComponents\T7NameSection.cs" />
+    <Compile Include="CompilerLib\ScriptComponents\T7ScriptHeader.cs" />
+    <Compile Include="CompilerLib\ScriptComponents\T7ScriptSection.cs" />
+    <Compile Include="CompilerLib\ScriptComponents\T7StringFixupsSection.cs" />
+    <Compile Include="CompilerLib\ScriptComponents\T7StringTableSection.cs" />
+    <Compile Include="CompilerLib\T7ScriptObject.cs" />
+    <Compile Include="CompilerLib\Utility.cs" />
+    <Compile Include="Compiler\BaseSyntax.cs" />
+    <Compile Include="Compiler\Compiler.cs" />
+    <Compile Include="Compiler\Games\BLOPSCompiler.cs" />
+    <Compile Include="Compiler\Games\BO3\BO3Syntax.cs" />
+    <Compile Include="Compiler\Games\GSCCompiler.cs" />
+    <Compile Include="Compiler\Interface\ICompiler.cs" />
+    <Compile Include="Compiler\NewSyntax.cs" />
+    <Compile Include="Compiler\Utilities\CompiledCode.cs" />
+    <Compile Include="Compiler\Utilities\DecData.cs" />
+    <Compile Include="Compiler\Utilities\Extensions.cs" />
+    <Compile Include="Compiler\Utilities\FunctionDefinitions.cs" />
+    <Compile Include="Compiler\Utilities\Keys.cs" />
+    <Compile Include="Compiler\Utilities\Utilities.cs" />
+    <Compile Include="Compiler\Utilities\WarningsData.cs" />
+    <Compile Include="External\EnvironmentEx.cs" />
+    <Compile Include="External\Evasion\DInvoke.cs" />
+    <Compile Include="External\Evasion\EnvPatch.cs" />
+    <Compile Include="External\Evasion\ModuleMapper.cs" />
+    <Compile Include="External\ExAssembler.cs" />
+    <Compile Include="External\ExThreads\ThreadContext32Ex.cs" />
+    <Compile Include="External\ExThreads\ThreadContext64Ex.cs" />
+    <Compile Include="External\ExThreads\ThreadContextEx.cs" />
+    <Compile Include="External\MemorySearcher.cs" />
+    <Compile Include="External\Native.cs" />
+    <Compile Include="External\PEStructures\PEActivationContext.cs" />
+    <Compile Include="External\PEStructures\PEDataDirectory.cs" />
+    <Compile Include="External\PEStructures\PEExportDirectory.cs" />
+    <Compile Include="External\PEStructures\PEImage.cs" />
+    <Compile Include="External\PEStructures\PEImportDirectory.cs" />
+    <Compile Include="External\PEStructures\PELoadConfigDirectory.cs" />
+    <Compile Include="External\PEStructures\PERelocationDirectory.cs" />
+    <Compile Include="External\PEStructures\PEResourceDirectory.cs" />
+    <Compile Include="External\PEStructures\PETlsDirectory.cs" />
+    <Compile Include="External\PEStructures\PETypes.cs" />
+    <Compile Include="External\PointerEx.cs" />
+    <Compile Include="External\PointerExtensions.cs" />
+    <Compile Include="External\ProcessEx.cs" />
+    <Compile Include="External\ProcessEx_ManualMap.cs" />
+    <Compile Include="External\ProcessModuleEx.cs" />
+    <Compile Include="External\Quartz\QAsm\Instructions\QInstruction.cs" />
+    <Compile Include="External\Quartz\QAsm\QAsmCompiler.cs" />
+    <Compile Include="External\Quartz\QAsm\QAsmGrammar.cs" />
+    <Compile Include="External\Quartz\QAsm\QCodeBlock.cs" />
+    <Compile Include="External\Quartz\QAsm\QObj.cs" />
+    <Compile Include="External\Quartz\QAsm\QVariable.cs" />
+    <Compile Include="External\RPCStackFrame.cs" />
+    <Compile Include="External\UtilExtensions.cs" />
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="libdebug\Process.cs" />
+    <Compile Include="libdebug\PS4DBG.Console.cs" />
+    <Compile Include="libdebug\PS4DBG.cs" />
+    <Compile Include="libdebug\PS4DBG.Debug.cs" />
+    <Compile Include="libdebug\PS4DBG.Kernel.cs" />
+    <Compile Include="libdebug\PS4DBG.Proc.cs" />
+    <Compile Include="libdebug\Registers.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SourceTokenDef.cs" />
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Content Include="download %281%29.ico" />
+    <Content Include="download %282%29.ico" />
+    <Content Include="download.ico" />
+    <Content Include="ps4bo3ops.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
