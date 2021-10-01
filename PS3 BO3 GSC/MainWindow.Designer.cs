@@ -53,6 +53,9 @@ namespace PS4_BO3_GSC
             this.connectionStatusLabel = new MetroFramework.Controls.MetroLabel();
             this.staticStatusLabel = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.gameVersionLabel = new MetroFramework.Controls.MetroLabel();
+            this.oneThreeThreeRadioButton = new MetroFramework.Controls.MetroRadioButton();
+            this.oneTwoSixRadioButton = new MetroFramework.Controls.MetroRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.styleManager)).BeginInit();
             this.connectionGroupBox.SuspendLayout();
             this.compilerGroupBox.SuspendLayout();
@@ -405,11 +408,50 @@ namespace PS4_BO3_GSC
             this.metroLabel3.Text = "By DizzRL";
             this.metroLabel3.UseStyleColors = true;
             // 
+            // gameVersionLabel
+            // 
+            this.gameVersionLabel.AutoSize = true;
+            this.gameVersionLabel.Location = new System.Drawing.Point(24, 364);
+            this.gameVersionLabel.Name = "gameVersionLabel";
+            this.gameVersionLabel.Size = new System.Drawing.Size(93, 19);
+            this.gameVersionLabel.TabIndex = 4;
+            this.gameVersionLabel.Text = "Game Version:";
+            this.gameVersionLabel.UseStyleColors = true;
+            // 
+            // oneThreeThreeRadioButton
+            // 
+            this.oneThreeThreeRadioButton.AutoSize = true;
+            this.oneThreeThreeRadioButton.Checked = true;
+            this.oneThreeThreeRadioButton.Location = new System.Drawing.Point(123, 366);
+            this.oneThreeThreeRadioButton.Name = "oneThreeThreeRadioButton";
+            this.oneThreeThreeRadioButton.Size = new System.Drawing.Size(44, 15);
+            this.oneThreeThreeRadioButton.TabIndex = 5;
+            this.oneThreeThreeRadioButton.TabStop = true;
+            this.oneThreeThreeRadioButton.Text = "1.33";
+            this.oneThreeThreeRadioButton.UseSelectable = true;
+            this.oneThreeThreeRadioButton.UseStyleColors = true;
+            this.oneThreeThreeRadioButton.CheckedChanged += new System.EventHandler(this.oneThreeThreeRadioButton_CheckedChanged);
+            // 
+            // oneTwoSixRadioButton
+            // 
+            this.oneTwoSixRadioButton.AutoSize = true;
+            this.oneTwoSixRadioButton.Location = new System.Drawing.Point(173, 366);
+            this.oneTwoSixRadioButton.Name = "oneTwoSixRadioButton";
+            this.oneTwoSixRadioButton.Size = new System.Drawing.Size(44, 15);
+            this.oneTwoSixRadioButton.TabIndex = 6;
+            this.oneTwoSixRadioButton.Text = "1.26";
+            this.oneTwoSixRadioButton.UseSelectable = true;
+            this.oneTwoSixRadioButton.UseStyleColors = true;
+            this.oneTwoSixRadioButton.CheckedChanged += new System.EventHandler(this.oneTwoSixRadioButton_CheckedChanged);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(652, 403);
+            this.Controls.Add(this.oneTwoSixRadioButton);
+            this.Controls.Add(this.oneThreeThreeRadioButton);
+            this.Controls.Add(this.gameVersionLabel);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -461,6 +503,9 @@ namespace PS4_BO3_GSC
         private System.Windows.Forms.Button browseOutputPathButton;
         private System.Windows.Forms.Button browseGscFolderButton;
         private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroRadioButton oneThreeThreeRadioButton;
+        private MetroFramework.Controls.MetroLabel gameVersionLabel;
+        private MetroFramework.Controls.MetroRadioButton oneTwoSixRadioButton;
     }
 }
 

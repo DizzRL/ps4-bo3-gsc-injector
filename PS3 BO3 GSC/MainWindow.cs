@@ -21,6 +21,7 @@ namespace PS4_BO3_GSC
 
         private PS4DBG ps4;
         private Process attachedProcess;
+        private Enums.GameVersion selectedGameVersion = Enums.GameVersion.OneThreeThree;
 
         public MainWindow()
         {
@@ -252,7 +253,7 @@ namespace PS4_BO3_GSC
                 MetroFramework.MetroMessageBox.Show(this, "Could not read compiled gsc file, make sure it still exists.", "Couldn't Read File", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            ulong dupGscAddress = 0x547EEF0;
+            ulong dupGscAddress = (ulong)selectedGameVersion;
             var filePointerAddress = ps4.ReadMemory<ulong>(attachedProcess.pid, dupGscAddress + 0x10);
             int checksum = ps4.ReadMemory<int>(attachedProcess.pid, filePointerAddress + 0x8);
             BitConverter.GetBytes(checksum).CopyTo(buffer, 0x8);
@@ -266,6 +267,24 @@ namespace PS4_BO3_GSC
         {
             Button btn = (Button)sender;
             btn.BackColor = Color.FromArgb(211, 211, 211);
+        }
+
+        private void oneThreeThreeRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+            {
+                selectedGameVersion = Enums.GameVersion.OneThreeThree;
+            }
+        }
+
+        private void oneTwoSixRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+            {
+                selectedGameVersion = Enums.GameVersion.OneTwoSix;
+            }
         }
     }
 }

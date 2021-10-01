@@ -143,6 +143,7 @@
     <Compile Include="Compiler\Utilities\Keys.cs" />
     <Compile Include="Compiler\Utilities\Utilities.cs" />
     <Compile Include="Compiler\Utilities\WarningsData.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="External\EnvironmentEx.cs" />
     <Compile Include="External\Evasion\DInvoke.cs" />
     <Compile Include="External\Evasion\EnvPatch.cs" />
