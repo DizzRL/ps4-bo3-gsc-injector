@@ -13,5 +13,13 @@ namespace PS4_BO3_GSC
             OneThreeThree = 0x547EEF0,
             OneTwoSix = 0x6B9CFD0
         }
+
+        public enum ConsoleVersion: int
+        {
+            fiveOFive = 0,
+            sixSevenTwo = 1,
+            sevenOTwo = 2,
+            sevenFiveFive = 3
+        }
     }
 }
