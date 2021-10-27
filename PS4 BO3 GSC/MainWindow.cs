@@ -8,6 +8,8 @@ using System.Text;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using System.Net;
+using System.Net.Sockets;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using libdebug;
@@ -18,10 +20,12 @@ namespace PS4_BO3_GSC
 {
     public partial class MainWindow : MetroForm
     {
-
+        public static Socket _psocket;
+        public static bool pDConnected;
         private PS4DBG ps4;
         private Process attachedProcess;
         private Enums.GameVersion selectedGameVersion = Enums.GameVersion.OneThreeThree;
+        private Enums.ConsoleVersion selectedConsoleVersion = Enums.ConsoleVersion.fiveOFive;
 
         public MainWindow()
         {
@@ -31,7 +35,58 @@ namespace PS4_BO3_GSC
         private void MainWindow_Load(object sender, EventArgs e)
         {
             var ps4Ip = Properties.Settings.Default.ps4ip;
+            var ps4Port = Properties.Settings.Default.ps4Port;
             ps4IpTextBox.Text = ps4Ip;
+            ps4PortTextBox.Text = ps4Port;
+            updateSelectedConsoleVersion();
+        }
+
+        private void updateSelectedConsoleVersion()
+        {
+            var savedVersion = (Enums.ConsoleVersion)Properties.Settings.Default.ps4Version;
+            selectedConsoleVersion = savedVersion;
+            if (savedVersion == Enums.ConsoleVersion.fiveOFive)
+                fiveOFiveRadioButton.Checked = true;
+            else if (savedVersion == Enums.ConsoleVersion.sixSevenTwo)
+                sixSevenTwoRadioButton.Checked = true;
+            else if (savedVersion == Enums.ConsoleVersion.sevenOTwo)
+                sevenOTwoRadioButton.Checked = true;
+            else
+                sevenFiveFiveRadioButton.Checked = true;
+        }
+
+        private string getPayloadFileForVersion()
+        {
+            var payloadsDirectory = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), "Payloads");
+            var payloadFileName = "ps4debug.bin";
+            switch (selectedConsoleVersion)
+            {
+                case Enums.ConsoleVersion.fiveOFive:
+                    return $"{payloadsDirectory}\\5_05\\{payloadFileName}";
+                case Enums.ConsoleVersion.sixSevenTwo:
+                    return $"{payloadsDirectory}\\6_72\\{payloadFileName}";
+                case Enums.ConsoleVersion.sevenOTwo:
+                    return $"{payloadsDirectory}\\7_02\\{payloadFileName}";
+                default:
+                    return $"{payloadsDirectory}\\7_55\\{payloadFileName}";
+            }
+        }
+        public static bool Connect2PS4(string ip, string port)
+        {
+            try
+            {
+                _psocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                _psocket.ReceiveTimeout = 3000;
+                _psocket.SendTimeout = 3000;
+                _psocket.Connect(new IPEndPoint(IPAddress.Parse(ip), Int32.Parse(port)));
+                pDConnected = true;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                pDConnected = false;
+                return false;
+            }
         }
 
         private void connectPS4Button_Click(object sender, EventArgs e)
@@ -56,6 +111,25 @@ namespace PS4_BO3_GSC
                     }
                 }
             }
+            try
+            {
+                if (Connect2PS4(ps4IpTextBox.Text, ps4PortTextBox.Text))
+                {
+                    _psocket.SendFile(getPayloadFileForVersion());
+                    pDConnected = false;
+                    _psocket.Close();
+                }
+            } catch (Exception err)
+            {
+                connectionStatusLabel.Text = "Connection Failed";
+                connectionStatusLabel.ForeColor = Color.Red;
+                return;
+            }
+            connectionStatusLabel.Text = "Payload Injected";
+            connectionStatusLabel.ForeColor = Color.YellowGreen;
+        }
+        private void attachBo3Button_Click(object sender, EventArgs e)
+        {
             try
             {
                 ps4 = new PS4DBG(ps4IpTextBox.Text);
@@ -89,12 +163,10 @@ namespace PS4_BO3_GSC
                 connectionStatusLabel.ForeColor = Color.Red;
                 return;
             }
-            connectionStatusLabel.Text = "Connected";
+            connectionStatusLabel.Text = "Connected + Attached";
             connectionStatusLabel.ForeColor = Color.Green;
             browseCompiledGscFileButton.Enabled = true;
-            ps4.Notify(222, "Connected to DizzRL's BO3 Injector!");
-            ps4IpTextBox.ReadOnly = true;
-            connectPS4Button.Enabled = false;
+            ps4.Notify(222, "Connected to DizzRL's BO3 GSC Injector!");
         }
 
         private void browseGscFolderButton_Click(object sender, EventArgs e)
@@ -285,6 +357,42 @@ namespace PS4_BO3_GSC
             {
                 selectedGameVersion = Enums.GameVersion.OneTwoSix;
             }
+        }
+
+        private void fiveOFiveRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+                updateConsoleVersion(Enums.ConsoleVersion.fiveOFive);
+
+        }
+
+        private void sixSevenTwoRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+                updateConsoleVersion(Enums.ConsoleVersion.sixSevenTwo);
+        }
+
+        private void sevenOTwoRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+                updateConsoleVersion(Enums.ConsoleVersion.sevenOTwo);
+        }
+
+        private void sevenFiveFiveRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+                updateConsoleVersion(Enums.ConsoleVersion.sevenFiveFive);
+        }
+
+        private void updateConsoleVersion(Enums.ConsoleVersion consoleVersion)
+        {
+            Properties.Settings.Default.ps4Version = (int)consoleVersion;
+            Properties.Settings.Default.Save();
+            this.selectedConsoleVersion = consoleVersion;
         }
     }
 }

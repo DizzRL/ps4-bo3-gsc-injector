@@ -5,5 +5,11 @@
     <Setting Name="ps4ip" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="ps4Version" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ps4Port" Type="System.String" Scope="User">
+      <Value Profile="(Default)">9021</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

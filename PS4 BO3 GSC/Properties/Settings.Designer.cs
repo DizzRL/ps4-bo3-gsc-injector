@@ -34,5 +34,29 @@ namespace PS4_BO3_GSC.Properties {
                 this["ps4ip"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ps4Version {
+            get {
+                return ((int)(this["ps4Version"]));
+            }
+            set {
+                this["ps4Version"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9021")]
+        public string ps4Port {
+            get {
+                return ((string)(this["ps4Port"]));
+            }
+            set {
+                this["ps4Port"] = value;
+            }
+        }
     }
 }
